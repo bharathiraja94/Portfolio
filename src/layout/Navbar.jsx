@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { href } from "react-router-dom";
 import Button from "@/components/Button";
 import { Menu, X } from "lucide-react";
@@ -11,9 +11,24 @@ const NavLinks = [
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleMenuClose = () => {
+    setIsMobileMenuOpen(false);
+    console.log("Btn click")
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 py-5 bg-transparent z-50">
+    <header
+      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${isScrolled ? "glass-strong py-3" : " py-5 bg-transparent"} z-50`}
+    >
       <nav className="container mx-auto px-6 flex items-center justify-between">
         <a
           href="#"
@@ -36,7 +51,9 @@ const Navbar = () => {
           </div>
         </div>
         <div className="hidden md:block">
-          <Button size="sm">Contact Me</Button>
+          <Button size="sm" onClick={handleMenuClose}>
+            Contact Me
+          </Button>
         </div>
 
         {/* mobile menu */}
@@ -55,12 +72,15 @@ const Navbar = () => {
               <a
                 href={link.href}
                 key={index}
+                onClick={handleMenuClose}
                 className="py-2 text-lg text-gray-400 hover:text-gray-200"
               >
                 {link.label}
               </a>
             ))}
-            <Button size="sm">Contact Me</Button>
+            <Button size="sm" onClick={handleMenuClose}>
+              Contact Me
+            </Button>
           </div>
         </div>
       )}

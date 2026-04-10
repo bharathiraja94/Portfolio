@@ -5,7 +5,7 @@ import { AnimatedBorderButton } from "../components/AnimatedButton";
 import { SlSocialLinkedin } from "react-icons/sl";
 import { FaGithub } from "react-icons/fa";
 
-const Skills = ["Shopify", "React", "Tailwind CSS", "Bootstrap", "Git"];
+const Skills = ["Shopify","Liquid" ,"React", "Tailwind CSS", "Bootstrap", "Github"];
 
 const Home = () => {
   return (
@@ -56,7 +56,7 @@ const Home = () => {
               </h1>
               <p className="text-lg text-gray-400 max-w-lg animate-fade-in animation-delay-200">
                 {" "}
-                Hi, I'm Bk — a software engineer specializing in React, Shopify.
+                Hi, I'm BR — a software engineer specializing in React, Shopify.
                 I build scalable, performant web applications that users love.
               </p>
             </div>
@@ -130,7 +130,7 @@ const Home = () => {
           </div>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in animation-delay-800">
-          <a href="#About" className="flex items-center flex-col gap-2 text-gray-400">
+          <a href="#about" className="flex items-center flex-col gap-2 text-gray-400">
             <span className="text-xs uppercase tracking-wider">Scroll</span>
             <ChevronDown className="w-6 h-6 animate-bounce" />
           </a>
