@@ -1,0 +1,71 @@
+import React, { useState } from "react";
+import { href } from "react-router-dom";
+import Button from "@/components/Button";
+import { Menu, X } from "lucide-react";
+
+const NavLinks = [
+  { href: "#about", label: "About" },
+  { href: "#projects", label: "Projects" },
+  { href: "#experience", label: "Experience" },
+];
+
+const Navbar = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  return (
+    <header className="fixed top-0 left-0 right-0 py-5 bg-transparent z-50">
+      <nav className="container mx-auto px-6 flex items-center justify-between">
+        <a
+          href="#"
+          className="text-xl font-bold tracking-tight text-foreground hover:text-cyan-400"
+        >
+          Portfolio<span className="text-cyan-400">.</span>
+        </a>
+        {/* desktop menu */}
+        <div className="hidden md:flex items-center gap-1">
+          <div className="glass rounded-full px-2 py-1 flex items-center gap-1">
+            {NavLinks.map((link, index) => (
+              <a
+                href={link.href}
+                key={index}
+                className="px-4 py-2 text-sm text-gray-400 hover:text-gray-200 rounded-full"
+              >
+                {link.label}{" "}
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className="hidden md:block">
+          <Button size="sm">Contact Me</Button>
+        </div>
+
+        {/* mobile menu */}
+
+        <button
+          className="md:hidden p-2 text-gray-50 cursor-pointer"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </nav>
+      {isMobileMenuOpen && (
+        <div className="md:hidden glass-strong">
+          <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
+            {NavLinks.map((link, index) => (
+              <a
+                href={link.href}
+                key={index}
+                className="py-2 text-lg text-gray-400 hover:text-gray-200"
+              >
+                {link.label}
+              </a>
+            ))}
+            <Button size="sm">Contact Me</Button>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+};
+
+export default Navbar;
