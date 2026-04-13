@@ -3,6 +3,7 @@
 :root{
   --color-cyan-400:#26c4b8;
   --color-background: 15 20 24;
+  --color-orange-400:#f5a623;
 }
 
 /* Optional dark mode (future ready) */

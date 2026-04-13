@@ -30,7 +30,7 @@ const highLights = [
 const About = () => {
   return (
     <>
-      <section id="about" className="py-32 relative overflow-hidden">
+      <section id="about" className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-6 z-10 relative">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* left column */}
